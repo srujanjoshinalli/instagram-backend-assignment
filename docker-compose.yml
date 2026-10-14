@@ -1,0 +1,15 @@
+
+services:
+  localstack:
+    image: localstack/localstack:3.8
+    container_name: image-storage-localstack
+    ports:
+      - "4566:4566"
+    environment:
+      SERVICES: s3,dynamodb
+      AWS_DEFAULT_REGION: us-east-1
+    volumes:
+      - localstack_data:/var/lib/localstack
+
+volumes:
+  localstack_data:
